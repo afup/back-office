@@ -1,6 +1,8 @@
 Back-office AFUP Next-gen
 =========================
 
+Le projet est découpé en deux bundles. Un pour que chaque utilisateur puisse gérer son compte (memberBundle). Un pour administrer le tout (adminBundle)
+
 TODO
 ====
 
