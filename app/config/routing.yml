@@ -1,0 +1,8 @@
+afup_core:
+    resource: "@AfupCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+afup_admin:
+    resource: "@AfupAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+

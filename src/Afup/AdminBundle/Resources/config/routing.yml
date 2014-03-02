@@ -1,0 +1,13 @@
+afup_admin_login:
+    pattern:   /login
+    defaults:  { _controller: AfupAdminBundle:Security:login }
+
+afup_admin_login_check:
+    pattern:   /login_check
+
+afup_admin_logout:
+    path:   /logout
+
+afup_admin_dashboard:
+    path: /
+    defaults: { _controller: AfupAdminBundle:Dashboard:dashboard }

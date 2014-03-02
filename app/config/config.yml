@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -52,10 +52,15 @@ doctrine:
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: "%kernel.root_dir%/data/data.db3"
         # path:     "%database_path%"
+        mapping_types:
+            enum: string
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        auto_mapping: false
+        mappings:
+            AfupCoreBundle: ~
+        naming_strategy: doctrine.orm.naming_strategy.underscore
 
 # Swiftmailer Configuration
 swiftmailer:

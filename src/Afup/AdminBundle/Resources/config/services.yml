@@ -1,0 +1,7 @@
+parameters:
+#    afup_admin.example.class: Afup\AdminBundle\Example
+
+services:
+#    afup_admin.example:
+#        class: %afup_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
