@@ -3,22 +3,30 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Title{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
         {% block stylesheets %}
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        {% stylesheets filter='cssrewrite' output="compiled/styles.css"
+            '@AfupAdminBundle/Resources/public/vendor/bootstrap-sortable/Contents/bootstrap-sortable.css'
+        %}
+          <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
 
         <style>
             body {
               padding-top : 60px;
             }
         </style>
+        {% endblock %}
     </head>
     <body>
       {% block body %}
@@ -28,7 +36,7 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     {% block brand %}
-                        <a class="navbar-brand" href="{{ path('afup_admin_dashboard') }}">Admin</a>
+                        <a class="navbar-brand" href="{{ path('afup_admin_dashboard') }}">AFUP</a>
                     {% endblock %}
                 </div>
                 <div class="collapse navbar">
@@ -43,11 +51,22 @@
         {% endblock header %}
 
         {% block container %}
-        <div class="container-fluid main">
-          <section class="content">
-              {% block content '' %}
-          </section>
-        </div>
+            <div class="row">
+                <aside class="col-md-2">
+                  {% block menu knp_menu_render('main') %}
+                </aside>
+                <section class="col-md-10 content">
+                  {% for type, messages in app.session.flashbag.all %}
+                      {% for message in messages %}
+                      <div class="alert alert-{{type}}">
+                          {{ message }}
+                      </div>
+                      {% endfor %}
+                  {% endfor %}
+                  {% block content '' %}
+                </section>
+              </section>
+            </div>
         {% endblock %}
 
         <footer class="page-footer">
@@ -60,6 +79,14 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+        {% javascripts filter="uglifyjs" output="compiled/scripts.js"
+            '@AfupAdminBundle/Resources/public/vendor/bootstrap-sortable/Scripts/bootstrap-sortable.js'
+            '@AfupAdminBundle/Resources/public/vendor/bootstrap-sortable/Scripts/moment.min.js'
+        %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
 
         {% endblock %}
 

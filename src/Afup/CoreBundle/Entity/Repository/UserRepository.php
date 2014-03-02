@@ -10,6 +10,16 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class UserRepository extends EntityRepository implements UserProviderInterface
 {
+    public function findUserList(array $properties = array())
+    {
+        $q = $this
+            ->createQueryBuilder('u')
+            ->getQuery();
+        ;
+
+        return $q->getArrayResult();
+    }
+
     public function loadUserByUsername($username)
     {
         $q = $this

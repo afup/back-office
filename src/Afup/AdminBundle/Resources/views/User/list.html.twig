@@ -1,0 +1,31 @@
+{% extends 'AfupAdminBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <table class="table table-bordered table-bordered sortable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th data-defaultsort='disabled'>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% if is_granted('ROLE_ADMIN_USER_EDIT') %}
+                    <a href="{{ path('afup_admin_user_edit', { id: user.id }) }}" class="btn btn-primary btn-xs" title="Modifier"><i class="fa fa-edit"></i></a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

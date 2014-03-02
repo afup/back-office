@@ -11,3 +11,13 @@ afup_admin_logout:
 afup_admin_dashboard:
     path: /
     defaults: { _controller: AfupAdminBundle:Dashboard:dashboard }
+
+afup_admin_user_list:
+    path: /users
+    defaults: { _controller: AfupAdminBundle:User:list }
+
+afup_admin_user_edit:
+    path: /users/{id}
+    defaults: { _controller: AfupAdminBundle:User:edit }
+    requirements:
+        id: \d+

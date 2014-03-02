@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Afup\AdminBundle\AfupAdminBundle(),
             new Afup\CoreBundle\AfupCoreBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
