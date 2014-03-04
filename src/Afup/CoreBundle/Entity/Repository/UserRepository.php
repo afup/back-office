@@ -14,6 +14,7 @@ class UserRepository extends EntityRepository implements UserProviderInterface
     {
         $q = $this
             ->createQueryBuilder('u')
+            ->select('partial u.{id,firstname,lastname,email}')
             ->getQuery();
         ;
 

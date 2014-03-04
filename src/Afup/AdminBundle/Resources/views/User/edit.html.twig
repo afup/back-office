@@ -2,6 +2,8 @@
 
 {% block content %}
     <div class="panel">
-        {{ form(form) }}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
     </div>
 {% endblock %}
