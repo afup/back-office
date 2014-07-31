@@ -1,3 +1,0 @@
-afup_core_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: AfupCoreBundle:Default:index }
