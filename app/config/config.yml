@@ -3,7 +3,6 @@ imports:
     - { resource: security.yml }
 
 framework:
-    #esi:             ~
     translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
@@ -14,7 +13,6 @@ framework:
     validation:      { enable_annotations: true }
     templating:
         engines: ['twig']
-        #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_proxies: ~
     session:         ~
@@ -34,7 +32,6 @@ assetic:
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [ 'AfupAdminBundle' ]
-    #java: /usr/bin/java
     filters:
         cssrewrite: ~
         uglifyjs:
