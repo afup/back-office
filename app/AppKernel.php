@@ -21,7 +21,6 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Afup\AdminBundle\AfupAdminBundle(),
             new Afup\CoreBundle\AfupCoreBundle(),
-            new Afup\Bundle\UserBundle\AfupUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
