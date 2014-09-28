@@ -1,74 +1,10 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: security.yml }
-
-framework:
-    translator:      { fallback: "%locale%" }
-    secret:          "%secret%"
-    router:
-        resource: "%kernel.root_dir%/config/routing.yml"
-        strict_requirements: ~
-    form:            ~
-    csrf_protection: ~
-    validation:      { enable_annotations: true }
-    templating:
-        engines: ['twig']
-    default_locale:  "%locale%"
-    trusted_proxies: ~
-    session:         ~
-    fragments:       ~
-    http_method_override: true
-
-# Twig Configuration
-twig:
-    debug:            "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
-    form:
-        resources:
-            - 'AfupAdminBundle:Form:fields.html.twig'
-
-# Assetic Configuration
-assetic:
-    debug:          "%kernel.debug%"
-    use_controller: false
-    bundles:        [ 'AfupAdminBundle' ]
-    filters:
-        cssrewrite: ~
-        uglifyjs:
-            bin: /usr/bin/uglifyjs
-
-# Doctrine Configuration
-doctrine:
-    dbal:
-        driver:   "%database_driver%"
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
-        charset:  UTF8
-        # if using pdo_sqlite as your database driver, add the path in parameters.yml
-        # e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        # path:     "%database_path%"
-        mapping_types:
-            enum: string
-
-    orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: false
-        mappings:
-            AfupCoreBundle: ~
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-
-# Swiftmailer Configuration
-swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
-
-knp_menu:
-    twig:
-        template: AfupAdminBundle:Menu:main_menu.html.twig
-
+    - { resource: extensions/admin.yml }
+    - { resource: extensions/assets.yml }
+    - { resource: extensions/database.yml }
+    - { resource: extensions/framework.yml }
+    - { resource: extensions/mailer.yml }
+    - { resource: extensions/security.yml }
+    - { resource: extensions/template_engine.yml }
+    - { resource: extensions/user.yml }

@@ -1,0 +1,8 @@
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ 'AfupAdminBundle' ]
+    filters:
+        cssrewrite: ~
+        uglifyjs:
+            bin: /usr/bin/uglifyjs
