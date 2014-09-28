@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="Afup\CoreBundle\Entity\Repository\UserRepository")
- * @ORM\Table
+ * @ORM\Table('afup_personnes_physiques')
  */
 class User implements UserInterface
 {
@@ -36,12 +36,12 @@ class User implements UserInterface
      ************************************************************************/
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="login", type="string")
      */
     protected $username;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="mot_de_passe", type="string", length=32)
      */
     protected $password;
 
@@ -51,22 +51,22 @@ class User implements UserInterface
     protected $salt;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="civilite", type="string", length=4)
      */
     protected $title;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="nom", type="string")
      */
     protected $lastname;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="prenom", type="string")
      */
     protected $firstname;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="email", type="string")
      */
     protected $email;
 
@@ -96,14 +96,49 @@ class User implements UserInterface
     protected $country;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="integer")
+     */
+    protected $countryId;
+
+    /**
+     * @ORM\Column(name="telephone_fixe", type="string", nullable=true)
      */
     protected $phone;
+
+    /**
+     * @ORM\Column(name="telephone_portable", type="string", nullable=true)
+     */
+    protected $mobilePhone;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
     protected $mobile;
+
+    /**
+     * @ORM\Column(type="niveau", type="integer")
+     */
+    protected $level;
+
+    /**
+     * @ORM\Column(name="niveau_modules", type="string")
+     */
+    protected $modulesLevel;
+
+    /**
+     * @ORM\Column(name="etat", type="integer")
+     */
+    protected $status;
+
+    /**
+     * @ORM\Column(name="date_relance", type="integer")
+     */
+    protected $nextReminderDate;
+
+    /**
+     * @ORM\Column(name="compte_svn", type="integer")
+     */
+    protected $svnAccount;
 
     /**
      * Constructor
