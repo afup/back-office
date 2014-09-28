@@ -1,6 +1,6 @@
 <?php
 
-namespace Afup\Bundle\UserBundle\Entity;
+namespace Afup\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
