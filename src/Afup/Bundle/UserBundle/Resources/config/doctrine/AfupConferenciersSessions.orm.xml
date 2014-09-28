@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Afup\Bundle\UserBundle\Entity\AfupConferenciersSessions" table="afup_conferenciers_sessions">
-    <id name="sessionId" type="integer" column="session_id"/>
-    <id name="conferencierId" type="integer" column="conferencier_id"/>
-  </entity>
-</doctrine-mapping>

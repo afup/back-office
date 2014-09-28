@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="Afup\CoreBundle\Entity\Repository\UserRepository")
- * @ORM\Table('afup_personnes_physiques')
+ * @ORM\Table
  */
 class User implements UserInterface
 {
