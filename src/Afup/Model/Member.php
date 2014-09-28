@@ -4,106 +4,115 @@ namespace Afup\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use FOS\UserBundle\Model\User;
+
 /**
  * Member
  */
-class Member
+class Member extends User
 {
+    const STATUS_INACTIVE = 0;
+
+    protected $id;
+
     /**
      * @var integer
      */
-    private $corporation;
+    protected $corporation;
 
     /**
      * @var string
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      */
-    private $password;
+    protected $password;
 
     /**
      * @var boolean
      */
-    private $level;
+    protected $level;
 
     /**
      * @var string
      */
-    private $modulesLevel;
+    protected $modulesLevel;
 
     /**
      * @var string
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * @var string
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @var string
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      */
-    private $address;
+    protected $address;
 
     /**
      * @var string
      */
-    private $postalCode;
+    protected $postalCode;
 
     /**
      * @var string
      */
-    private $city;
+    protected $city;
 
     /**
      * @var string
      */
-    private $countryId;
+    protected $countryId;
 
     /**
      * @var string
      */
-    private $phone;
+    protected $phone;
 
     /**
      * @var string
      */
-    private $mobile;
+    protected $mobile;
 
     /**
      * @var boolean
      */
-    private $status;
+    protected $status;
 
     /**
      * @var integer
      */
-    private $nextReminderDate;
+    protected $nextReminderDate;
 
     /**
      * @var string
      */
-    private $svnAccount;
+    protected $svnAccount;
 
-    /**
-     * @var integer
-     */
-    private $id;
+    public function __construct()
+    {
+        parent::__construct();
 
+        if (!isset($this->status)) {
+            $this->status = self::STATUS_INACTIVE;
+        }
+    }
 
     /**
      * Set corporation
@@ -527,5 +536,32 @@ class Member
     public function getId()
     {
         return $this->id;
+    }
+    /**
+     * @var string
+     */
+    private $countryCode;
+
+    /**
+     * Set countryCode
+     *
+     * @param string $countryCode
+     * @return Member
+     */
+    public function setCountryCode($countryCode)
+    {
+        $this->countryCode = $countryCode;
+
+        return $this;
+    }
+
+    /**
+     * Get countryCode
+     *
+     * @return string 
+     */
+    public function getCountryCode()
+    {
+        return $this->countryCode;
     }
 }

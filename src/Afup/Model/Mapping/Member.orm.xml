@@ -8,11 +8,11 @@
     <id name="id" type="smallint" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="corporation" type="smallint" column="id_personne_morale" nullable="false"/>
+    <field name="corporation" type="smallint" column="id_personne_morale" nullable="true"/>
     <field name="username" type="string" column="login" length="30" nullable="false"/>
     <field name="password" type="string" column="mot_de_passe" length="32" nullable="false"/>
-    <field name="level" type="boolean" column="niveau" nullable="false"/>
-    <field name="modulesLevel" type="string" column="niveau_modules" length="10" nullable="false"/>
+    <field name="level" type="boolean" column="niveau" nullable="true"/>
+    <field name="modulesLevel" type="string" column="niveau_modules" length="10" nullable="true"/>
     <field name="title" type="string" column="civilite" length="4" nullable="false"/>
     <field name="lastName" type="string" column="nom" length="40" nullable="false"/>
     <field name="firstName" type="string" column="prenom" length="40" nullable="false"/>
@@ -20,7 +20,8 @@
     <field name="address" type="text" column="adresse" nullable="false"/>
     <field name="postalCode" type="string" column="code_postal" length="10" nullable="false"/>
     <field name="city" type="string" column="ville" length="50" nullable="false"/>
-    <field name="countryId" type="string" column="id_pays" length="2" nullable="false"/>
+    <field name="countryId" type="string" column="id_pays" length="2" nullable="true"/>
+    <field name="countryCode" type="string" column="code_pays" length="2" nullable="false"/>
     <field name="phone" type="string" column="telephone_fixe" length="20" nullable="true"/>
     <field name="mobile" type="string" column="telephone_portable" length="20" nullable="true"/>
     <field name="status" type="boolean" column="etat" nullable="false"/>

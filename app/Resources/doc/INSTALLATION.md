@@ -1,6 +1,6 @@
 # Installation
 
-For linux and OS X users
+## For Linux and OS X users
 
 Download composer to install dependencies
 
@@ -18,3 +18,15 @@ Install assets
 Run build-in PHP server in development (available since PHP 5.4)
 
     php app/console server:run 
+
+Apply database migrations
+
+    php app/console doctrine:migrations:mig 
+    
+Load development fixtures
+    
+    php app/console doc:fix:load  --append --fixtures=src/Afup/Bundle/MemberBundle/Tests/DataFixtures/ORM
+
+Generate entities from model and configured mapping (`src/Afup/Model/Mapping`)
+
+    php app/console generate:doctrine:entities Afup/Model --path=src
