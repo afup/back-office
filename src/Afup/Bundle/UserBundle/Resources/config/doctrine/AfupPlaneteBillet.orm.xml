@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Afup\Bundle\UserBundle\Entity\AfupPlaneteBillet" table="afup_planete_billet">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="afupPlaneteFluxId" type="integer" column="afup_planete_flux_id" nullable="true"/>
+    <field name="clef" type="string" column="clef" length="255" nullable="true"/>
+    <field name="titre" type="text" column="titre" nullable="true"/>
+    <field name="url" type="string" column="url" length="255" nullable="true"/>
+    <field name="maj" type="integer" column="maj" nullable="true"/>
+    <field name="auteur" type="text" column="auteur" nullable="true"/>
+    <field name="resume" type="text" column="resume" nullable="true"/>
+    <field name="contenu" type="text" column="contenu" nullable="true"/>
+    <field name="etat" type="boolean" column="etat" nullable="true"/>
+  </entity>
+</doctrine-mapping>

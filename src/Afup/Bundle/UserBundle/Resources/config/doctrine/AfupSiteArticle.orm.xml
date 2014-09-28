@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Afup\Bundle\UserBundle\Entity\AfupSiteArticle" table="afup_site_article">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idSiteRubrique" type="integer" column="id_site_rubrique" nullable="true"/>
+    <field name="surtitre" type="text" column="surtitre" nullable="true"/>
+    <field name="titre" type="text" column="titre" nullable="true"/>
+    <field name="raccourci" type="string" column="raccourci" length="255" nullable="true"/>
+    <field name="descriptif" type="text" column="descriptif" nullable="true"/>
+    <field name="chapeau" type="text" column="chapeau" nullable="true"/>
+    <field name="contenu" type="text" column="contenu" nullable="true"/>
+    <field name="position" type="integer" column="position" nullable="true"/>
+    <field name="date" type="integer" column="date" nullable="true"/>
+    <field name="etat" type="boolean" column="etat" nullable="true"/>
+    <field name="idPersonnePhysique" type="smallint" column="id_personne_physique" nullable="true"/>
+  </entity>
+</doctrine-mapping>

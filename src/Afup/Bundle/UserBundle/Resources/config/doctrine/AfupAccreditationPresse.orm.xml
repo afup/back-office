@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Afup\Bundle\UserBundle\Entity\AfupAccreditationPresse" table="afup_accreditation_presse">
+    <indexes>
+      <index name="id_forum" columns="id_forum"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="date" type="integer" column="date" nullable="false"/>
+    <field name="titreRevue" type="string" column="titre_revue" length="255" nullable="false"/>
+    <field name="civilite" type="string" column="civilite" length="4" nullable="false"/>
+    <field name="nom" type="string" column="nom" length="40" nullable="false"/>
+    <field name="prenom" type="string" column="prenom" length="40" nullable="false"/>
+    <field name="cartePresse" type="string" column="carte_presse" length="50" nullable="false"/>
+    <field name="adresse" type="text" column="adresse" nullable="false"/>
+    <field name="codePostal" type="string" column="code_postal" length="10" nullable="false"/>
+    <field name="ville" type="string" column="ville" length="50" nullable="false"/>
+    <field name="idPays" type="string" column="id_pays" length="2" nullable="false"/>
+    <field name="telephone" type="string" column="telephone" length="40" nullable="true"/>
+    <field name="email" type="string" column="email" length="100" nullable="false"/>
+    <field name="commentaires" type="text" column="commentaires" nullable="true"/>
+    <field name="idForum" type="smallint" column="id_forum" nullable="false"/>
+    <field name="valide" type="boolean" column="valide" nullable="false"/>
+  </entity>
+</doctrine-mapping>

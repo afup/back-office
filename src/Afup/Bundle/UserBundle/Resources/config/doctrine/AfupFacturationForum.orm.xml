@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Afup\Bundle\UserBundle\Entity\AfupFacturationForum" table="afup_facturation_forum">
+    <indexes>
+      <index name="id_pays" columns="id_pays"/>
+      <index name="id_forum" columns="id_forum"/>
+    </indexes>
+    <id name="reference" type="string" column="reference" length="255">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="montant" type="float" column="montant" precision="10" scale="0" nullable="false"/>
+    <field name="dateReglement" type="integer" column="date_reglement" nullable="true"/>
+    <field name="typeReglement" type="boolean" column="type_reglement" nullable="false"/>
+    <field name="informationsReglement" type="string" column="informations_reglement" length="255" nullable="true"/>
+    <field name="email" type="string" column="email" length="100" nullable="false"/>
+    <field name="societe" type="string" column="societe" length="40" nullable="true"/>
+    <field name="nom" type="string" column="nom" length="40" nullable="true"/>
+    <field name="prenom" type="string" column="prenom" length="40" nullable="true"/>
+    <field name="adresse" type="text" column="adresse" nullable="false"/>
+    <field name="codePostal" type="string" column="code_postal" length="10" nullable="false"/>
+    <field name="ville" type="string" column="ville" length="50" nullable="false"/>
+    <field name="idPays" type="string" column="id_pays" length="2" nullable="false"/>
+    <field name="autorisation" type="string" column="autorisation" length="20" nullable="true"/>
+    <field name="transaction" type="string" column="transaction" length="20" nullable="true"/>
+    <field name="etat" type="boolean" column="etat" nullable="false"/>
+    <field name="facturation" type="boolean" column="facturation" nullable="false"/>
+    <field name="idForum" type="smallint" column="id_forum" nullable="false"/>
+    <field name="dateFacture" type="integer" column="date_facture" nullable="true"/>
+  </entity>
+</doctrine-mapping>

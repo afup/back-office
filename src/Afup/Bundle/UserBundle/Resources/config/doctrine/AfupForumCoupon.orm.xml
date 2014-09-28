@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Afup\Bundle\UserBundle\Entity\AfupForumCoupon" table="afup_forum_coupon">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idForum" type="integer" column="id_forum" nullable="false"/>
+    <field name="texte" type="string" column="texte" length="45" nullable="false"/>
+  </entity>
+</doctrine-mapping>

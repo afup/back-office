@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Afup\Bundle\UserBundle\Entity\AfupTags" table="afup_tags">
+    <unique-constraints>
+      <unique-constraint name="source" columns="source,id_source,tag"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="source" type="string" column="source" length="255" nullable="true"/>
+    <field name="idSource" type="integer" column="id_source" nullable="true"/>
+    <field name="tag" type="string" column="tag" length="255" nullable="true"/>
+    <field name="idPersonnePhysique" type="integer" column="id_personne_physique" nullable="true"/>
+    <field name="date" type="integer" column="date" nullable="true"/>
+  </entity>
+</doctrine-mapping>

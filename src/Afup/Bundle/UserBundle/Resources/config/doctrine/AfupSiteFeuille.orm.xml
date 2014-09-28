@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Afup\Bundle\UserBundle\Entity\AfupSiteFeuille" table="afup_site_feuille">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idParent" type="integer" column="id_parent" nullable="true"/>
+    <field name="nom" type="string" column="nom" length="255" nullable="true"/>
+    <field name="lien" type="string" column="lien" length="255" nullable="true"/>
+    <field name="alt" type="string" column="alt" length="255" nullable="true"/>
+    <field name="position" type="integer" column="position" nullable="true"/>
+    <field name="date" type="integer" column="date" nullable="true"/>
+    <field name="etat" type="boolean" column="etat" nullable="true"/>
+    <field name="image" type="string" column="image" length="255" nullable="true"/>
+  </entity>
+</doctrine-mapping>

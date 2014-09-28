@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Afup\Bundle\UserBundle\Entity\AfupForumPartenaires" table="afup_forum_partenaires">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idForum" type="integer" column="id_forum" nullable="false"/>
+    <field name="idNiveauPartenariat" type="integer" column="id_niveau_partenariat" nullable="false"/>
+    <field name="ranking" type="integer" column="ranking" nullable="false"/>
+    <field name="nom" type="string" column="nom" length="100" nullable="false"/>
+    <field name="presentation" type="text" column="presentation" nullable="true"/>
+    <field name="logo" type="string" column="logo" length="100" nullable="true"/>
+    <field name="site" type="string" column="site" length="255" nullable="true"/>
+  </entity>
+</doctrine-mapping>
