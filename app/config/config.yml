@@ -3,6 +3,7 @@ imports:
     - { resource: extensions/admin.yml }
     - { resource: extensions/assets.yml }
     - { resource: extensions/database.yml }
+    - { resource: extensions/legacy.yml }
     - { resource: extensions/framework.yml }
     - { resource: extensions/mailer.yml }
     - { resource: extensions/security.yml }

@@ -1,0 +1,4 @@
+theodo_evolution_legacy_wrapper:
+    root_dir: %kernel.root_dir%/../../legacy-back-office/htdocs
+    kernel:
+        id:   afup_legacy.kernel
