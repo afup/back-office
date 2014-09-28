@@ -16,7 +16,7 @@ class FixturesLoader implements FixtureInterface
     {
         Fixtures::load(
             array(
-                __DIR__ . '/../Resources/fixtures/users.yml',
+                __DIR__ . '/../../Resources/fixtures/users.yml',
             ),
             $manager
         );
