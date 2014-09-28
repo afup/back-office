@@ -1,12 +1,12 @@
 <?php
 
-namespace Afup\CoreBundle\Entity;
+namespace Afup\Bundle\MemberBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass="Afup\CoreBundle\Entity\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="Afup\Bundle\MemberBundle\Entity\Repository\UserRepository")
  * @ORM\Table
  */
 class User implements UserInterface
@@ -23,7 +23,7 @@ class User implements UserInterface
      ************************************************************************/
 
     /**
-     * @ORM\ManyToMany(targetEntity="Afup\CoreBundle\Entity\Group", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="Afup\Bundle\MemberBundle\Entity\Group", inversedBy="users")
      * @ORM\JoinTable(
      *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id", onDelete="CASCADE")}
@@ -437,10 +437,10 @@ class User implements UserInterface
     /**
      * Add groups
      *
-     * @param \Afup\CoreBundle\Entity\Group $groups
+     * @param \Afup\Bundle\MemberBundle\Entity\Group $groups
      * @return User
      */
-    public function addGroup(\Afup\CoreBundle\Entity\Group $groups)
+    public function addGroup(\Afup\Bundle\MemberBundle\Entity\Group $groups)
     {
         $this->groups[] = $groups;
 
@@ -450,9 +450,9 @@ class User implements UserInterface
     /**
      * Remove groups
      *
-     * @param \Afup\CoreBundle\Entity\Group $groups
+     * @param \Afup\Bundle\MemberBundle\Entity\Group $groups
      */
-    public function removeGroup(\Afup\CoreBundle\Entity\Group $groups)
+    public function removeGroup(\Afup\Bundle\MemberBundle\Entity\Group $groups)
     {
         $this->groups->removeElement($groups);
     }

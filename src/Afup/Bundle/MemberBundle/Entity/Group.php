@@ -1,6 +1,6 @@
 <?php
 
-namespace Afup\CoreBundle\Entity;
+namespace Afup\Bundle\MemberBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,12 +22,12 @@ class Group
      ************************************************************************/
 
     /**
-     * @ORM\ManyToMany(targetEntity="Afup\CoreBundle\Entity\User", mappedBy="groups")
+     * @ORM\ManyToMany(targetEntity="Afup\Bundle\MemberBundle\Entity\User", mappedBy="groups")
      */
     protected $users;
 
     /**
-     * @ORM\OneToMany(targetEntity="Afup\CoreBundle\Entity\GroupRole", mappedBy="group", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Afup\Bundle\MemberBundle\Entity\GroupRole", mappedBy="group", orphanRemoval=true)
      */
     protected $roles;
 
@@ -89,10 +89,10 @@ class Group
     /**
      * Add users
      *
-     * @param \Afup\CoreBundle\Entity\User $users
+     * @param \Afup\Bundle\MemberBundle\Entity\User $users
      * @return Group
      */
-    public function addUser(\Afup\CoreBundle\Entity\User $users)
+    public function addUser(\Afup\Bundle\MemberBundle\Entity\User $users)
     {
         $this->users[] = $users;
     
@@ -102,9 +102,9 @@ class Group
     /**
      * Remove users
      *
-     * @param \Afup\CoreBundle\Entity\User $users
+     * @param \Afup\Bundle\MemberBundle\Entity\User $users
      */
-    public function removeUser(\Afup\CoreBundle\Entity\User $users)
+    public function removeUser(\Afup\Bundle\MemberBundle\Entity\User $users)
     {
         $this->users->removeElement($users);
     }
@@ -122,10 +122,10 @@ class Group
     /**
      * Add roles
      *
-     * @param \Afup\CoreBundle\Entity\GroupRole $roles
+     * @param \Afup\Bundle\MemberBundle\Entity\GroupRole $roles
      * @return Group
      */
-    public function addRole(\Afup\CoreBundle\Entity\GroupRole $roles)
+    public function addRole(\Afup\Bundle\MemberBundle\Entity\GroupRole $roles)
     {
         $this->roles[] = $roles;
     
@@ -135,9 +135,9 @@ class Group
     /**
      * Remove roles
      *
-     * @param \Afup\CoreBundle\Entity\GroupRole $roles
+     * @param \Afup\Bundle\MemberBundle\Entity\GroupRole $roles
      */
-    public function removeRole(\Afup\CoreBundle\Entity\GroupRole $roles)
+    public function removeRole(\Afup\Bundle\MemberBundle\Entity\GroupRole $roles)
     {
         $this->roles->removeElement($roles);
     }

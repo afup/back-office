@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Afup\AdminBundle\AfupAdminBundle(),
-            new Afup\CoreBundle\AfupCoreBundle(),
+            new Afup\Bundle\MemberBundle\AfupMemberBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

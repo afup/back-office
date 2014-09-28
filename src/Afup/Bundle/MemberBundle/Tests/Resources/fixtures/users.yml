@@ -1,4 +1,4 @@
-Afup\CoreBundle\Entity\Group:
+Afup\Bundle\MemberBundle\Entity\Group:
     super_admin:
         name: Super-Administrateurs
     admin:
@@ -6,7 +6,7 @@ Afup\CoreBundle\Entity\Group:
     member:
         name: Membres
 
-Afup\CoreBundle\Entity\GroupRole:
+Afup\Bundle\MemberBundle\Entity\GroupRole:
     super_admin_role:
         role: ROLE_SUPER_ADMIN
         group: @super_admin
@@ -17,7 +17,7 @@ Afup\CoreBundle\Entity\GroupRole:
         role: ROLE_MEMBER
         group: @member
 
-Afup\CoreBundle\Entity\User:
+Afup\Bundle\MemberBundle\Entity\User:
     martin:
         username: martin
         password: 47bce5c74f589f4867dbd57e9ca9f808

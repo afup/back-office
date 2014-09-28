@@ -1,15 +1,12 @@
 <?php
 
-namespace Afup\Bundle\UserBundle\DependencyInjection;
+namespace Afup\Bundle\MemberBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * Validates and merges configuration from your app/config files
- *
- * @package Afup\Bundle\UserBundle\DependencyInjection
- * @author  Thierry Marianne <thierry.marianne@weaving-the-web.org>
  */
 class Configuration implements ConfigurationInterface
 {
@@ -19,7 +16,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('afup_user');
+        $rootNode = $treeBuilder->root('afup_member');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

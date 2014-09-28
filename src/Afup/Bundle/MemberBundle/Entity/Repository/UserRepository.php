@@ -1,6 +1,6 @@
 <?php
 
-namespace Afup\CoreBundle\Entity\Repository;
+namespace Afup\Bundle\MemberBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;

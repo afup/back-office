@@ -1,6 +1,6 @@
 <?php
 
-namespace Afup\CoreBundle\Entity;
+namespace Afup\Bundle\MemberBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,7 +22,7 @@ class GroupRole
      ************************************************************************/
 
     /**
-     * @ORM\ManyToOne(targetEntity="Afup\CoreBundle\Entity\Group", inversedBy="roles")
+     * @ORM\ManyToOne(targetEntity="Afup\Bundle\MemberBundle\Entity\Group", inversedBy="roles")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
      */
     protected $group;
@@ -72,10 +72,10 @@ class GroupRole
     /**
      * Set group
      *
-     * @param \Afup\CoreBundle\Entity\Group $group
+     * @param \Afup\Bundle\MemberBundle\Entity\Group $group
      * @return GroupRole
      */
-    public function setGroup(\Afup\CoreBundle\Entity\Group $group)
+    public function setGroup(\Afup\Bundle\MemberBundle\Entity\Group $group)
     {
         $this->group = $group;
     
@@ -85,7 +85,7 @@ class GroupRole
     /**
      * Get group
      *
-     * @return \Afup\CoreBundle\Entity\Group 
+     * @return \Afup\Bundle\MemberBundle\Entity\Group
      */
     public function getGroup()
     {
