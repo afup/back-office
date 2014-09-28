@@ -7,7 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User;
 
 /**
- * Member
+ * @package Afup\Model
+ * @author  Thierry Marianne <thierry.marianne@weaving-the-web.org>
  */
 class Member extends User
 {

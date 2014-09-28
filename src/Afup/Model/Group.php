@@ -7,7 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\Group as BaseGroup;
 
 /**
- * Group
+ * @package Afup\Model
+ * @author  Thierry Marianne <thierry.marianne@weaving-the-web.org>
  */
 class Group extends BaseGroup
 {
