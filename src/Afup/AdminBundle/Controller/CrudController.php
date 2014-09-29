@@ -26,14 +26,14 @@ abstract class CrudController extends Controller
     /**
      * Get the data to be presented to the list
      *
-     * @return array|Traversable
+     * @return array|\Traversable
      */
     abstract protected function getListData();
 
     /**
      * Get the form type used for edition and creation
      *
-     * @return string|Symfony\Component\Form\FormTypeInterface
+     * @return string|\Symfony\Component\Form\FormTypeInterface
      */
     abstract protected function getFormType();
 
@@ -49,7 +49,7 @@ abstract class CrudController extends Controller
      *
      * @param  Request $request
      *
-     * @return Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction(Request $request)
     {
@@ -69,7 +69,7 @@ abstract class CrudController extends Controller
      * @param  Request $request
      * @param  mixed   $id
      *
-     * @return Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request)
     {
@@ -116,7 +116,7 @@ abstract class CrudController extends Controller
      *
      * @param string $action
      *
-     * @throws Symfony\Component\Security\Core\Exception\AccessDeniedException
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
      */
     protected function checkGranted($action)
     {

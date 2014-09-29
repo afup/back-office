@@ -1,0 +1,6 @@
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - 'AfupAdminBundle:Form:fields.html.twig'

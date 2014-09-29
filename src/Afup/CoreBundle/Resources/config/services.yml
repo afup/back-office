@@ -1,4 +1,0 @@
-parameters:
-#    afup_core.example.class: Afup\CoreBundle\Example
-
-services:

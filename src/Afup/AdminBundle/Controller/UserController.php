@@ -30,7 +30,7 @@ class UserController extends CrudController
      */
     protected function getEntityName()
     {
-        return 'Afup\CoreBundle\Entity\User';
+        return 'Afup\MemberBundle\Entity\User';
     }
 
     /**

@@ -8,18 +8,42 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
+
+            // Framework
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Afup\AdminBundle\AfupAdminBundle(),
-            new Afup\CoreBundle\AfupCoreBundle(),
+
+            // Security
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+
+            // Template engine
+            new Symfony\Bundle\TwigBundle\TwigBundle(),
+
+            // Log
+            new Symfony\Bundle\MonologBundle\MonologBundle(),
+
+            // Mailer
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+
+            // Assets
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+
+            // Database
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+
+            // User management
+            new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+
+            // Legacy wrapper
+            new Theodo\Evolution\Bundle\LegacyWrapperBundle\TheodoEvolutionLegacyWrapperBundle(),
+
+            // AFUP
+            new Afup\AdminBundle\AfupAdminBundle(),
+            new Afup\Bundle\MemberBundle\AfupMemberBundle(),
+            new Afup\Bundle\LegacyBundle\AfupLegacyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
