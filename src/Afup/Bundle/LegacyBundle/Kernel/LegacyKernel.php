@@ -40,7 +40,16 @@ class LegacyKernel extends BaseKernel
      */
     public function handle(Request $request, $type = self::MASTER_REQUEST, $catch = true)
     {
-        $legacyEntryPoint = $this->getRootDir() . '/pages/administration/index.php';
+        $requestUri = $request->getUri();
+        $baseUrl = $request->getSchemeAndHttpHost();
+
+        $filteredUri = filter_var($requestUri, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED);
+        if (strpos($filteredUri, '.php') === strlen($filteredUri) - 4) {
+            $legacyEntryPoint = $this->getRootDir() . str_replace($baseUrl, '', $filteredUri);
+        } else {
+            $legacyEntryPoint = $this->getRootDir() . '/pages/administration/index.php';
+        }
+
         $headers = array();
         $statusCode = 200;
 
@@ -154,9 +163,11 @@ class LegacyKernel extends BaseKernel
      */
     protected function fetchLegacyContent($legacyEntryPoint)
     {
+        $legacyDirectory = dirname($legacyEntryPoint);;
+
         // Change current directory and legacy root directory
         $currentDirectory = getcwd();
-        chdir($this->getRootDir());
+        chdir($legacyDirectory);
 
         ini_set('display_errors', '0');
         error_reporting(0);
