@@ -40,26 +40,11 @@ class LegacyKernel extends BaseKernel
      */
     public function handle(Request $request, $type = self::MASTER_REQUEST, $catch = true)
     {
-        $legacyEntryPoint = $this->getRootDir() . '/pages/administration/index.php';
-        $headers = array();
-        $statusCode = 200;
-
         if ($this->shouldHandleAsAsset($request)) {
-            try {
-                $asset = $this->fetchLegacyAsset($request);
-                $headers = $asset['headers'];
-                $content = $asset['content'];
-            } catch (NotImplementedException $exception) {
-                $content = 'You might want to submit a feature request.';
-                $statusCode = 501;
-            }
-        } elseif (file_exists($legacyEntryPoint)) {
-            $content = $this->fetchLegacyContent($legacyEntryPoint);
+            return $this->handleAssetRequest($request);
         } else {
-            throw new \RuntimeException('Please follow the installation doc to access the legacy back-office');
+            return $this->handleLegacyRequest($request);
         }
-
-        return new Response($content, $statusCode, $headers);
     }
 
     /**
@@ -73,6 +58,83 @@ class LegacyKernel extends BaseKernel
 
         return (strpos($path, '/javascript') !== false) || (strpos($path, '.css') !== false) ||
             (strpos($path, '/images') !== false);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    protected function handleAssetRequest(Request $request)
+    {
+        try {
+            $asset      = $this->fetchLegacyAsset($request);
+            $content    = $asset['content'];
+            $headers    = $asset['headers'];
+            $statusCode = 200;
+        } catch (NotImplementedException $exception) {
+            $content    = 'You might want to submit a feature request.';
+            $headers    = array();
+            $statusCode = 501;
+        }
+
+        return new Response($content, $statusCode, $headers);
+    }
+
+    /**
+     * @param Request $request
+     */
+    protected function handleLegacyRequest(Request $request)
+    {
+        $legacyEntryPoint = $this->getLegacyEntryPointPath($request);
+        if ($this->isValidLegacyEntryPoint($legacyEntryPoint)) {
+            $legacyEntryPoint = $this->getLegacyEntryPointPath($request);
+            $content          = $this->fetchLegacyContent($legacyEntryPoint);
+
+            return new Response($content, 200);
+        } else {
+            throw new \RuntimeException('Please follow the installation doc to access the legacy back-office');
+        }
+    }
+
+    /**
+     * @param $legacyEntryPoint
+     *
+     * @return bool
+     */
+    protected function isValidLegacyEntryPoint($legacyEntryPoint)
+    {
+        return file_exists($legacyEntryPoint);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return string
+     */
+    protected function getLegacyEntryPointPath(Request $request)
+    {
+        $requestUri = $request->getUri();
+        $baseUrl    = $request->getSchemeAndHttpHost();
+
+        $filteredUri = filter_var($requestUri, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED);
+        if ($this->hasPhpExtension($filteredUri)) {
+            $legacyEntryPoint = str_replace($baseUrl, '', $filteredUri);
+        } else {
+            $legacyEntryPoint = '/pages/administration/index.php';
+        }
+
+        return $this->getRootDir() . $legacyEntryPoint;
+    }
+
+    /**
+     * @param $uri
+     *
+     * @return bool
+     */
+    protected function hasPhpExtension($uri)
+    {
+        return strpos($uri, '.php') === strlen($uri) - 4;
     }
 
     /**
@@ -154,9 +216,11 @@ class LegacyKernel extends BaseKernel
      */
     protected function fetchLegacyContent($legacyEntryPoint)
     {
+        $legacyDirectory = dirname($legacyEntryPoint);;
+
         // Change current directory and legacy root directory
         $currentDirectory = getcwd();
-        chdir($this->getRootDir());
+        chdir($legacyDirectory);
 
         ini_set('display_errors', '0');
         error_reporting(0);
@@ -233,6 +297,8 @@ class LegacyKernel extends BaseKernel
 
     /**
      * @param Request $request
+     *
+     * @return array
      */
     protected function fetchLegacyAsset(Request $request)
     {
@@ -243,15 +309,15 @@ class LegacyKernel extends BaseKernel
         if (file_exists($assetFilePath)) {
             $content = $this->getAssetContent($request);
             $headers = $this->getAssetHeaders($request);
-
-            return array(
-                'content' => $content,
-                'headers' => $headers
-            );
         } else {
             $parts = explode('/', $assetFilePath);
             throw new NotFoundHttpException(sprintf('"%s" cannot be found.', $parts[count($parts) - 1]));
         }
+
+        return array(
+            'content' => $content,
+            'headers' => $headers
+        );
     }
 
     /**
@@ -264,8 +330,6 @@ class LegacyKernel extends BaseKernel
         $queryStringStart = strpos($assetFilePath, '?');
         if ($queryStringStart !== false) {
             $assetFilePath = substr($assetFilePath, 0, $queryStringStart);
-
-            return $assetFilePath;
         }
 
         return $assetFilePath;
