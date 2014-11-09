@@ -1,4 +1,4 @@
 fos_user:
     db_driver: orm
-    firewall_name: main
+    firewall_name: member
     user_class: Afup\UserBundle\Entity\User
