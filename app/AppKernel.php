@@ -35,15 +35,18 @@ class AppKernel extends Kernel
 
             // User management
             new FOS\UserBundle\FOSUserBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+           // new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
             // Legacy wrapper
             new Theodo\Evolution\Bundle\LegacyWrapperBundle\TheodoEvolutionLegacyWrapperBundle(),
 
             // AFUP
             new Afup\AdminBundle\AfupAdminBundle(),
-            new Afup\Bundle\MemberBundle\AfupMemberBundle(),
-            new Afup\Bundle\LegacyBundle\AfupLegacyBundle(),
+          //  new Afup\Bundle\MemberBundle\AfupMemberBundle(),
+            new Afup\LegacyBundle\AfupLegacyBundle(),
+            new Afup\SubscriptionBundle\AfupSubscriptionBundle(),
+            new Afup\UserBundle\AfupUserBundle(),
+            new Afup\MemberBundle\AfupMemberBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
