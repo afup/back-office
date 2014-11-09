@@ -40,21 +40,23 @@ class Subcription
     /**
      * @var float
      *
-     * @ORM\Column(name="montant", type="float")
+     * @ORM\Column(name="montant", type="float", scale=2)
      */
     private $montant;
 
     /**
-     * @var \stdClass
+     * @var \Afup\SubscriptionBundle\Entity\Corporation
      *
-     * @ORM\Column(name="corporation", type="object")
+     * @ORM\OneToOne(targetEntity="Afup\SubscriptionBundle\Entity\Corporation", inversedBy="member")
+     * @ORM\JoinColumn(name="corporation_id", referencedColumnName="id")
      */
     private $corporation;
 
     /**
-     * @var \stdClass
+     * @var \Afup\SubscriptionBundle\Entity\Member
      *
-     * @ORM\Column(name="member", type="object")
+     * @ORM\OneToOne(targetEntity="Afup\SubscriptionBundle\Entity\Member", inversedBy="member")
+     * @ORM\JoinColumn(name="member_id", referencedColumnName="id")
      */
     private $member;
 

@@ -35,7 +35,15 @@ class Corporation
      */
     private $siret;
 
-
+        
+    /**
+     * @var \Afup\UserBundle\Entity\User
+     * 
+     * @ORM\OneToOne(targetEntity="Afup\UserBundle\Entity\User", inversedBy="corporation")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $user;
+    
     /**
      * Get id
      *
@@ -92,5 +100,28 @@ class Corporation
     public function getSiret()
     {
         return $this->siret;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Afup\UserBundle\Entity\User $user
+     * @return Corporation
+     */
+    public function setUser(\Afup\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Afup\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

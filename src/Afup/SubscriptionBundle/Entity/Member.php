@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Member
+ * 
+ * @author Jérôme Desjardins <hello@jewome62.eu>
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Afup\SubscriptionBundle\Entity\Repository\MemberRepository")
@@ -27,7 +29,14 @@ class Member
      * @ORM\Column(name="subscription", type="object")
      */
     private $subscription;
-
+    
+    /**
+     * @var \Afup\UserBundle\Entity\User
+     * 
+     * @ORM\OneToOne(targetEntity="Afup\UserBundle\Entity\User", inversedBy="member")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $user;
 
     /**
      * Get id
@@ -61,5 +70,28 @@ class Member
     public function getSubscription()
     {
         return $this->subscription;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Afup\UserBundle\Entity\User $user
+     * @return Member
+     */
+    public function setUser(\Afup\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Afup\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
