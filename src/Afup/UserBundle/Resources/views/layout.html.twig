@@ -18,5 +18,10 @@
         output="js/login.js"
     %}
         <script src="{{ asset_url }}"></script>
+        <script>
+                jQuery(document).ready(function() {
+                    Login.init();
+                });
+        </script>
     {% endjavascripts %}
 {% endblock %}  
