@@ -1,0 +1,33 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+<!-- start: REGISTER BOX -->
+<div class="box-register">
+        <h3>Sign Up</h3>
+        <p>
+                Enter your personal details below:
+        </p>
+        <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register form-register">
+                <div class="errorHandler alert alert-danger no-display">
+                        <i class="fa fa-remove-sign"></i> You have some form errors. Please check below.
+                </div>
+                {{ form_widget(form) }}
+               
+                <div class="form-actions">
+                        Already have an account?
+                        <a href="#" class="go-back">
+                                Log-in
+                        </a>
+                        <button type="submit" class="btn btn-green pull-right">
+                                {{ 'registration.submit'|trans({}, 'FOSUserBundle') }} <i class="fa fa-arrow-circle-right"></i>
+                        </button>
+                </div>
+        </form>
+        <!-- start: COPYRIGHT -->
+        <div class="copyright">
+                2014 &copy; Rapido by cliptheme.
+        </div>
+        <!-- end: COPYRIGHT -->
+</div>
+<!-- end: REGISTER BOX -->
+{% endblock fos_user_content %}
