@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- Template Name: Rapido - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.2 Author: ClipTheme -->
+<!--[if IE 8]><html class="ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+	<!--<![endif]-->
+	<!-- start: HEAD -->
+	<head>
+		<title>{% block title %}Afup{% endblock %}</title>
+		<!-- start: META -->
+		<meta charset="utf-8" />
+		<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="" name="description" />
+		<meta content="" name="author" />
+                <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,200,100,800' rel='stylesheet' type='text/css'>
+                {% stylesheets 
+                    'assets/plugins/bootstrap/css/bootstrap.min.css'
+                    'assets/plugins/font-awesome/css/font-awesome.min.css'
+                    'assets/plugins/iCheck/skins/all.css'
+                    'assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css'
+                    'assets/plugins/animate.css/animate.min.css'
+                    'assets/css/styles.css'
+                    'assets/css/styles-responsive.css'
+                    'assets/css/plugins.css'
+                    filter='cssrewrite' output='css/main.css'
+                %}
+                    <link rel="stylesheet" href="{{ asset_url }}" />
+                {% endstylesheets %}
+
+		<link rel="stylesheet" href="{{ asset('assets/css/themes/theme-default.css') }}" type="text/css" id="skin_color">
+		<link rel="stylesheet" href="{{ asset('assets/css/print.css') }}" type="text/css" media="print"/>
+
+		{% block stylesheets %}{% endblock %}
+		<!-- end: CORE CSS -->
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+	</head>
+    <body class="{% block body %}login{% endblock %}">
+        {% block content %}{% endblock %}
+        <!--[if lt IE 9]>
+            <script src="{{ asset('assets/plugins/respond.min.js') }}"></script>
+            <script src="{{ asset('assets/plugins/excanvas.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('assets/plugins/jQuery/jquery-1.11.1.min.js') }}"></script>
+        <![endif]-->
+        <!--[if gte IE 9]><!-->
+            <script src="{{ asset('assets/plugins/jQuery/jquery-2.1.1.min.js') }}"></script>
+        <!--<![endif]-->
+        {% javascripts 'assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js'
+            'assets/plugins/bootstrap/js/bootstrap.min.js'
+            'assets/plugins/blockUI/jquery.blockUI.js'
+            'assets/plugins/iCheck/jquery.icheck.min.js'
+            'assets/plugins/moment/min/moment.min.js'
+            'assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js'
+            'assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js'
+            'assets/plugins/bootbox/bootbox.min.js'
+            'assets/plugins/jquery.scrollTo/jquery.scrollTo.min.js'
+            'assets/plugins/ScrollToFixed/jquery-scrolltofixed-min.js'
+            'assets/plugins/jquery.appear/jquery.appear.js'
+            'assets/plugins/ScrollToFixed/jquery-scrolltofixed-min.js'
+            'assets/plugins/jquery-cookie/jquery.cookie.js'
+            'assets/plugins/velocity/jquery.velocity.min.js'
+            'assets/plugins/TouchSwipe/jquery.touchSwipe.min.js'
+            'assets/plugins/ScrollToFixed/jquery-scrolltofixed-min.js'
+            'assets/js/main.js'
+            output='js/main.js'
+        %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script>
+                jQuery(document).ready(function() {
+                        Main.init();
+                        SVExamples.init();
+                        Index.init();
+                });
+        </script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

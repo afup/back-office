@@ -1,0 +1,51 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+<div class="box-login">
+    <h3>Sign in to your account</h3>
+    <p>
+            Please enter your name and password to log in.
+    </p>
+    <form class="form-login" action="{{ path("fos_user_security_check") }}" method="post">
+         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% if error %}
+                <div class="errorHandler alert alert-danger no-display"> <i class="fa fa-remove-sign"></i> {{ error|trans({}, 'FOSUserBundle') }}</div>
+            {% endif %}
+            <fieldset>
+                    <div class="form-group">
+                            <span class="input-icon">
+                                    <input type="text" class="form-control" name="_username" value="{{ last_username }}" required="required" placeholder="Username">
+                                    <i class="fa fa-user"></i> </span>
+                    </div>
+                    <div class="form-group form-actions">
+                            <span class="input-icon">
+                                    <input type="password" class="form-control password" id="password" name="_password" required="required" placeholder="Password">
+                                    <i class="fa fa-lock"></i>
+                                    <a class="forgot" href="#">
+                                            I forgot my password
+                                    </a> </span>
+                    </div>
+                    <div class="form-actions">
+                            <label for="remember" class="checkbox-inline">
+                                    <input id="remember_me" name="_remember_me" value="on" type="checkbox" class="grey remember">
+                                    Keep me signed in
+                            </label>
+                            <input type="submit" id="_submit" name="_submit" class="btn btn-green pull-right">
+                                    {{ 'security.login.submit'|trans({}, 'FOSUserBundle') }} <i class="fa fa-arrow-circle-right"></i>
+                            </input>
+                    </div>
+                    <div class="new-account">
+                            Don't have an account yet?
+                            <a href="#" class="register">
+                                    Create an account
+                            </a>
+                    </div>
+            </fieldset>
+    </form>
+    <!-- start: COPYRIGHT -->
+    <div class="copyright">
+            2014 &copy; Rapido by cliptheme.
+    </div>
+    <!-- end: COPYRIGHT -->
+</div>
+{% endblock fos_user_content %}
