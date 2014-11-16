@@ -1,4 +1,4 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends parent_template() %}
 
 {% block fos_user_content %}
 <div class="box-login">
@@ -21,7 +21,7 @@
                             <span class="input-icon">
                                     <input type="password" class="form-control password" id="password" name="_password" required="required" placeholder="Password">
                                     <i class="fa fa-lock"></i>
-                                    <a class="forgot" href="#">
+                                    <a class="forgot" href='{{ path('fos_user_resetting_request') }}'>
                                             I forgot my password
                                     </a> </span>
                     </div>

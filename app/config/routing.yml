@@ -13,4 +13,6 @@ afup_subscription:
 afup_admin:
     resource: "@AfupAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
-
+    
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

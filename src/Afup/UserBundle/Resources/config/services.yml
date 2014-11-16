@@ -1,4 +1,6 @@
 services:
-#    afup_user.example:
-#        class: Afup\UserBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    afup_user.twig.getparent:
+        class: Afup\UserBundle\Twig\GetParentExtension
+        arguments: [ @service_container ]
+        tags:
+            - { name: twig.extension }

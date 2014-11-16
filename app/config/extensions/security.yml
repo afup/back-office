@@ -30,7 +30,7 @@ security:
 
     access_control:
         - { path: ^/membre/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/membre/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/membre/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/membre, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }

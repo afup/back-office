@@ -40,6 +40,8 @@ class AppKernel extends Kernel
             // Legacy wrapper
             new Theodo\Evolution\Bundle\LegacyWrapperBundle\TheodoEvolutionLegacyWrapperBundle(),
 
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            
             // AFUP
             new Afup\AdminBundle\AfupAdminBundle(),
           //  new Afup\Bundle\MemberBundle\AfupMemberBundle(),

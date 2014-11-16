@@ -28,7 +28,7 @@
                     'assets/css/plugins.css'
                     filter='cssrewrite' output='css/main.css'
                 %}
-                    <link rel="stylesheet" href="{{ asset_url }}" />
+                <link rel="stylesheet" href="{{ asset_url }}" />
                 {% endstylesheets %}
 
 		<link rel="stylesheet" href="{{ asset('assets/css/themes/theme-default.css') }}" type="text/css" id="skin_color">
@@ -67,8 +67,10 @@
             'assets/js/main.js'
             output='js/main.js'
         %}
-            <script src="{{ asset_url }}"></script>
+        <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         <script>
                 jQuery(document).ready(function() {
                         Main.init();

@@ -1,0 +1,8 @@
+afup_userbundle_resetting_request:
+    pattern: /request
+    defaults: { _controller: FOSUserBundle:Resetting:request }
+    requirement:
+        _method: GET
+    options:
+        expose: true
+

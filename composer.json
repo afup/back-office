@@ -23,6 +23,7 @@
         "doctrine/migrations": "~1.0@dev",
         "symfony/security-bundle": "~2.5",
         "friendsofsymfony/user-bundle": "~1.3",
+        "friendsofsymfony/jsrouting-bundle": "~1.5",
         "theodo-evolution/legacy-wrapper-bundle": "dev-master@dev",
         "composer/composer": "~1.0@dev"
     },

@@ -20,25 +20,34 @@ var Login = function() {
 		});
 	};
 	var runLoginButtons = function() {
-		$('.forgot').on('click', function() {
-			$('.box-login').removeClass("animated flipInX").addClass("animated bounceOutRight").on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-				$(this).hide().removeClass("animated bounceOutRight");
+		$('.forgot').on('click', function(event) {
+                    
+                    event.preventDefault();
+                    
+                    $('.box-login').removeClass("animated flipInX").addClass("animated bounceOutRight").on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                            $(this).hide().removeClass("animated bounceOutRight");
+                    });
 
-			});
-			$('.box-forgot').show().addClass("animated bounceInLeft").on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-				$(this).show().removeClass("animated bounceInLeft");
-
-			});
+                    showModuleAjax($(this), '.box-forgot', function(){
+                        $('.box-forgot').show().addClass("animated bounceInLeft").on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                            $(this).show().removeClass("animated bounceInLeft");
+                        });
+                    });
 		});
-		$('.register').on('click', function() {
-			$('.box-login').removeClass("animated flipInX").addClass("animated bounceOutRight").on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-				$(this).hide().removeClass("animated bounceOutRight");
+		$('.register').on('click', function(event) {
+                    
+                     event.preventDefault();
+                     
+                    $('.box-login').removeClass("animated flipInX").addClass("animated bounceOutRight").on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                            $(this).hide().removeClass("animated bounceOutRight");
 
-			});
-			$('.box-register').show().addClass("animated bounceInLeft").on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-				$(this).show().removeClass("animated bounceInLeft");
-
-			});
+                    });
+                    
+                    showModuleAjax($(this), '.box-register', function(){
+                        $('.box-register').show().addClass("animated bounceInLeft").on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                            $(this).show().removeClass("animated bounceInLeft");
+                        });
+                    });
 
 		});
 		$('.go-back').click(function() {
@@ -58,6 +67,21 @@ var Login = function() {
 			});
 		});
 	};
+        var showModuleAjax = function(click, className, callback) {
+            if($(className).length === 0){
+                $.ajax({
+                    'url' : click.attr('href'),
+                    'dataType' : 'html',
+                    'success' : function(data){
+                        $('.main-login').append(data);
+                        callback();
+                    }
+                });
+            } else {
+                callback();
+            }
+            return;
+        };
 	//function to return the querystring parameter with a given name.
 	var getParameterByName = function(name) {
 		name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
