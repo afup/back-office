@@ -1,22 +1,24 @@
 {% extends parent_template() %}
 
+{% block body %}{{ parent() }} register{% endblock %}    
+
 {% block fos_user_content %}
 <!-- start: REGISTER BOX -->
 <div class="box-register">
-        <h3>Sign Up</h3>
+        <h3>S'inscrire</h3>
         <p>
-                Enter your personal details below:
+                Entrez vos données personnelles ci-dessous:
         </p>
         <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register form-register">
                 <div class="errorHandler alert alert-danger no-display">
-                        <i class="fa fa-remove-sign"></i> You have some form errors. Please check below.
+                        <i class="fa fa-remove-sign"></i> Vous avez des erreurs. Se il vous plaît vérifier ci-dessous.
                 </div>
                 {{ form_widget(form) }}
                
                 <div class="form-actions">
-                        Already have an account?
+                        Vous avez déjà un compte?
                         <a href="#" class="go-back">
-                                Log-in
+                                Se connecter
                         </a>
                         <button type="submit" class="btn btn-green pull-right">
                                 {{ 'registration.submit'|trans({}, 'FOSUserBundle') }} <i class="fa fa-arrow-circle-right"></i>

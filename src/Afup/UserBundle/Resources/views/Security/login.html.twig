@@ -2,9 +2,9 @@
 
 {% block fos_user_content %}
 <div class="box-login">
-    <h3>Sign in to your account</h3>
+    <h3>Connectez-vous à votre compte</h3>
     <p>
-            Please enter your name and password to log in.
+           S'il vous plaît, entrer votre nom et mot de passe pour vous connecter.
     </p>
     <form class="form-login" action="{{ path("fos_user_security_check") }}" method="post">
          <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -22,23 +22,24 @@
                                     <input type="password" class="form-control password" id="password" name="_password" required="required" placeholder="Password">
                                     <i class="fa fa-lock"></i>
                                     <a class="forgot" href='{{ path('fos_user_resetting_request') }}'>
-                                            I forgot my password
+                                           <img src="{{ asset('assets/images/loading.gif') }}" style="display:none;" class="loading-forgot" /> J'ai oublié mon mot de passe
                                     </a> </span>
                     </div>
                     <div class="form-actions">
                             <label for="remember" class="checkbox-inline">
                                     <input id="remember_me" name="_remember_me" value="on" type="checkbox" class="grey remember">
-                                    Keep me signed in
+                                    Rester connecté
                             </label>
                             <input type="submit" id="_submit" name="_submit" class="btn btn-green pull-right">
                                     {{ 'security.login.submit'|trans({}, 'FOSUserBundle') }} <i class="fa fa-arrow-circle-right"></i>
                             </input>
                     </div>
                     <div class="new-account">
-                            Don't have an account yet?
-                            <a href="#" class="register">
-                                    Create an account
+                           Vous n'avez pas encore de compte?
+                            <a href="{{ path('fos_user_registration_register') }}" class="register">
+                                   Crée un compte
                             </a>
+                            <img src="{{ asset('assets/images/loading.gif') }}" style="display:none;" class="loading-register" /> 
                     </div>
             </fieldset>
     </form>
