@@ -6,6 +6,9 @@
     <p>
            S'il vous plaît, entrer votre nom et mot de passe pour vous connecter.
     </p>
+    {% if error %}
+        <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+    {% endif %}
     <form class="form-login" action="{{ path("fos_user_security_check") }}" method="post">
          <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
             {% if error %}

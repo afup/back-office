@@ -25,6 +25,7 @@ security:
                 check_path: /membre/login_check
                 login_path: /membre/login
                 use_referer: true
+                default_target_path: /membre/
             logout:       true
             anonymous:    true
 

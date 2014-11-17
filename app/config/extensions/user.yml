@@ -2,3 +2,6 @@ fos_user:
     db_driver: orm
     firewall_name: member
     user_class: Afup\UserBundle\Entity\User
+    registration:
+        form:
+            type: afup_user_registration
