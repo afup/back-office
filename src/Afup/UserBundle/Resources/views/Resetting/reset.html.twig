@@ -1,0 +1,24 @@
+{% extends parent_template() %}
+
+{% block body %}{{ parent() }} request{% endblock %}    
+
+{% block fos_user_content %}
+<!-- start: FORGOT BOX -->
+<div class="box-forgot">
+        <h3>Changer votre mot de passe</h3>
+        <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+            {{ form_widget(form) }}
+            <div>
+                <input type="submit" value="{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}" />
+            </div>
+        </form>
+
+        <!-- start: COPYRIGHT -->
+        <div class="copyright">
+                2014 &copy; Rapido by cliptheme.
+        </div>
+        <!-- end: COPYRIGHT -->
+</div>
+<!-- end: FORGOT BOX -->
+{% endblock fos_user_content %}
+

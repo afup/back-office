@@ -1,0 +1,16 @@
+{% extends parent_template() %}
+
+{% block body %}{{ parent() }} register{% endblock %}    
+
+{% block fos_user_content %}
+
+<div class="box-register">
+        <h3>Vérifier vos e-mails</h3>
+       <p>{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</p>
+        <!-- start: COPYRIGHT -->
+        <div class="copyright">
+                2014 &copy; Rapido by cliptheme.
+        </div>
+        <!-- end: COPYRIGHT -->
+</div>
+{% endblock fos_user_content %}

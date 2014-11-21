@@ -5,3 +5,9 @@ fos_user:
     registration:
         form:
             type: afup_user_registration
+        confirmation:
+            from_email: # Use this node only if you don't want the global email address for the confirmation email
+                address:        inscription@afup.fr
+                sender_name:    Afup
+            enabled:    true # change to true for required email confirmation
+            template:   FOSUserBundle:Registration:email.txt.twig

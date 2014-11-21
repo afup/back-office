@@ -1,0 +1,19 @@
+{% extends parent_template() %}
+
+{% block body %}{{ parent() }} request{% endblock %}    
+
+{% block fos_user_content %}
+<!-- start: FORGOT BOX -->
+<div class="box-forgot">
+        <h3>Vérifier vos emails</h3>
+        <p>
+            {{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}
+        </p>
+        <!-- start: COPYRIGHT -->
+        <div class="copyright">
+                2014 &copy; Rapido by cliptheme.
+        </div>
+        <!-- end: COPYRIGHT -->
+</div>
+<!-- end: FORGOT BOX -->
+{% endblock fos_user_content %}
