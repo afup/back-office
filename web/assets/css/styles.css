@@ -3231,7 +3231,7 @@ body.login .box-login, body.login .box-forgot, body.login .box-register {
   border-radius: 5px;
   overflow: hidden;
   padding: 15px;
-  position: absolute;
+  /*position: absolute;*/
   top: 60px;
   left: 0;
   right: 0;

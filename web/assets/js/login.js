@@ -55,9 +55,9 @@ var Login = function() {
 		$('.main-login').on('click','.go-back', function() {
                     var boxToShow;
                     if ($('.box-register').length !== 0 && $('.box-register').is(":visible")) {
-                            boxToShow = $('.box-register');
+                        boxToShow = $('.box-register');
                     } else {
-                            boxToShow = $('.box-forgot');
+                        boxToShow = $('.box-forgot');
                     }
                     boxToShow.addClass("animated bounceOutLeft").on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
                             boxToShow.hide().removeClass("animated bounceOutLeft");

@@ -10,14 +10,14 @@
                 Entrez vos données personnelles ci-dessous:
         </p>
         <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register form-register">
-                <div class="errorHandler alert alert-danger no-display">
+                <div class="errorHandler alert alert-danger">
                         <i class="fa fa-remove-sign"></i> Vous avez des erreurs. Se il vous plaît vérifier ci-dessous.
                 </div>
                 {{ form_widget(form) }}
                
                 <div class="form-actions">
                         Vous avez déjà un compte?
-                        <a href="#" class="go-back">
+                        <a href="{{ path('fos_user_security_login') }}" class="go-back">
                                 Se connecter
                         </a>
                         <button type="submit" class="btn btn-green pull-right">
