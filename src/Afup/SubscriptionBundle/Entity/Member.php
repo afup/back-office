@@ -24,8 +24,9 @@ class Member
     private $id;
 
     /**
-     * @var \stdClass
+     * @var \Afup\SubscriptionBundle\Entity\Subscription
      *
+     * @ORM\OneToMany(targetEntity="Afup\UserBundle\Entity\User", inversedBy="member")
      * @ORM\Column(name="subscription", type="object")
      */
     private $subscription;

@@ -38,16 +38,24 @@ class Subcription
     private $endDate;
 
     /**
+     * @var \Afup\SubscriptionBundle\Entity\Corporation
+     *
+     * @ORM\ManyToOne(targetEntity="Afup\SubscriptionBundle\Entity\SubcriptionType")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     */
+    private $type;
+    
+    /**
      * @var float
      *
-     * @ORM\Column(name="montant", type="float", scale=2)
+     * @ORM\Column(name="price", type="float", scale=2)
      */
-    private $montant;
+    private $price;
 
     /**
      * @var \Afup\SubscriptionBundle\Entity\Corporation
      *
-     * @ORM\OneToOne(targetEntity="Afup\SubscriptionBundle\Entity\Corporation", inversedBy="member")
+     * @ORM\ManyToOne(targetEntity="Afup\SubscriptionBundle\Entity\Corporation", inversedBy="subscriptions")
      * @ORM\JoinColumn(name="corporation_id", referencedColumnName="id")
      */
     private $corporation;
@@ -55,7 +63,7 @@ class Subcription
     /**
      * @var \Afup\SubscriptionBundle\Entity\Member
      *
-     * @ORM\OneToOne(targetEntity="Afup\SubscriptionBundle\Entity\Member", inversedBy="member")
+     * @ORM\ManyToOne(targetEntity="Afup\SubscriptionBundle\Entity\Member", inversedBy="subscriptions")
      * @ORM\JoinColumn(name="member_id", referencedColumnName="id")
      */
     private $member;
@@ -120,27 +128,27 @@ class Subcription
     }
 
     /**
-     * Set montant
+     * Set price
      *
-     * @param float $montant
+     * @param float $price
      *
      * @return Subcription
      */
-    public function setMontant($montant)
+    public function setPrice($price)
     {
-        $this->montant = $montant;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * Get montant
+     * Get price
      *
      * @return float
      */
-    public function getMontant()
+    public function getPrice()
     {
-        return $this->montant;
+        return $this->price;
     }
 
     /**

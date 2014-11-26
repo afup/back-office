@@ -34,8 +34,7 @@ class Corporation
      * @ORM\Column(name="siret", type="bigint")
      */
     private $siret;
-
-        
+  
     /**
      * @var \Afup\UserBundle\Entity\User
      * 
@@ -43,6 +42,20 @@ class Corporation
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
     private $user;
+    
+    /**
+     * @var \Afup\SubscriptionBundle\Entity\Subscription
+     * 
+     * @ORM\OneToMany(targetEntity="Afup\SubscriptionBundle\Entity\Subscription", mappedBy="corporation")
+     **/
+    private $subscriptions;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numSubcriptionMax", type="int")
+     */
+    private $numSubcriptionMax;
     
     /**
      * Get id
