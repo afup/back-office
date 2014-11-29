@@ -5,16 +5,16 @@ namespace Afup\SubscriptionBundle\Manager;
 use Doctrine\Common\Persistence\ObjectManager;
 use Afup\SubscriptionBundle\Entity\Corporation;
 use Afup\SubscriptionBundle\Entity\Member;
-use Afup\SubscriptionBundle\Entity\Subcription;
-use Afup\SubscriptionBundle\Entity\SubcriptionType;
+use Afup\SubscriptionBundle\Entity\Subscription;
+use Afup\SubscriptionBundle\Entity\SubscriptionType;
 use Afup\UserBundle\Entity\User;
 
 /**
- * Description of SubscriptionManager
+ * Description of CorporationSubscriptionManager
  *
  * @author Jérôme Desjardins <hello@jewome62.eu>
  */
-class SubscriptionManager
+class CorporationSubscriptionManager
 {
     protected $em;
 
@@ -26,11 +26,11 @@ class SubscriptionManager
     /**
      * Create an Subscription for an User
      * @param User $user
-     * @param SubcriptionType $type
+     * @param SubscriptionType $type
      * @param \DateTimeInterface $dateStart
-     * @return Subcription
+     * @return Subscription
      */
-    public function createMemberSubscription(User $user, SubcriptionType $type, \DateTimeInterface $dateStart = null)
+    public function createCorporateSubscription(User $user, SubscriptionType $type, \DateTimeInterface $dateStart = null)
     {
         $member = $user->getMember();
         
@@ -46,9 +46,9 @@ class SubscriptionManager
             $this->em->persist($member);
         }
         
-        $subscription = new Subcription();
+        $subscription = new Subscription();
         $subscription->setType($type);
-        $subscription->setMember($member);
+        $subscription->setCorporation($member);
         $subscription->setPrice($type->getPrice());
         $subscription->setStartDate($dateReference);
         $subscription->getEndDate($dateReference->modify('+1an'));
@@ -58,19 +58,28 @@ class SubscriptionManager
     }
     
     /**
-     * Create an Subcription for an User paid by corporation
+     * Update the current Member subscription
      * @param User $user
-     * @param Corporation $corporation
+     * @param SubscriptionType $type
      * @param \DateTimeInterface $dateStart
-     * @return Subcription
+     * @return Subscription
      */
-    public function createCorporateSubscription(User $user, Corporation $corporation, \DateTimeInterface $dateStart = null)
-    {
-        $typeCorporationMember = $this->em->getRepository('AfupSubscriptionBundle:SubcriptionType')->findOneByTag('corporation-member');
+    public function updateMemberSubscription(User $user, SubscriptionType $type, \DateTimeInterface $dateStart = null){
         
-        $subscription = $this->createMemberSubscription($user, $typeCorporationMember, $dateStart);
-        $subscription->setCorporation($corporation);
+        $subscription = $this->em->getRepository('AfupSubscriptionBundle:Subscription')->getLastSubscriptionWithUser($user);
         
-        return $subscription;
+        $date = new \DateTime();
+        $dateStart = ($dateStart instanceof \DateTime) ? $dateStart : new \DateTime();
+        
+        if($subscription instanceof Subscription){
+            $interval = $date->diff($subscription->getEndDate());
+            
+            if($interval->y === 0){
+                $dateStart = $subscription->getEndDate();
+            }
+        }
+        
+        return $this->createPersonnalMemberSubscription($user, $type, $dateStart);
     }
+
 }

@@ -26,8 +26,8 @@ class Member
     /**
      * @var \Afup\SubscriptionBundle\Entity\Subscription
      *
-     * @ORM\OneToMany(targetEntity="Afup\UserBundle\Entity\User", inversedBy="member")
-     * @ORM\Column(name="subscription", type="object")
+     * @ORM\OneToMany(targetEntity="Afup\SubscriptionBundle\Entity\PersonalSubscription", mappedBy="member")
+     * @ORM\JoinColumn(name="subscription", referencedColumnName="id")
      */
     private $subscription;
     
@@ -39,10 +39,19 @@ class Member
      **/
     private $user;
 
+ 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->subscription = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -50,23 +59,32 @@ class Member
     }
 
     /**
-     * Set subscription
+     * Add subscription
      *
-     * @param \stdClass $subscription
-     *
+     * @param \Afup\SubscriptionBundle\Entity\PersonalSubscription $subscription
      * @return Member
      */
-    public function setSubscription($subscription)
+    public function addSubscription(\Afup\SubscriptionBundle\Entity\PersonalSubscription $subscription)
     {
-        $this->subscription = $subscription;
+        $this->subscription[] = $subscription;
 
         return $this;
     }
 
     /**
+     * Remove subscription
+     *
+     * @param \Afup\SubscriptionBundle\Entity\PersonalSubscription $subscription
+     */
+    public function removeSubscription(\Afup\SubscriptionBundle\Entity\PersonalSubscription $subscription)
+    {
+        $this->subscription->removeElement($subscription);
+    }
+
+    /**
      * Get subscription
      *
-     * @return \stdClass
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getSubscription()
     {

@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Corporation
  *
- * @ORM\Table()
  * @ORM\Entity(repositoryClass="Afup\SubscriptionBundle\Entity\Repository\CorporationRepository")
  */
 class Corporation
@@ -44,23 +43,32 @@ class Corporation
     private $user;
     
     /**
-     * @var \Afup\SubscriptionBundle\Entity\Subscription
+     * @var \Afup\SubscriptionBundle\Entity\CorporationSubscription
      * 
-     * @ORM\OneToMany(targetEntity="Afup\SubscriptionBundle\Entity\Subscription", mappedBy="corporation")
+     * @ORM\OneToMany(targetEntity="Afup\SubscriptionBundle\Entity\CorporationSubscription", mappedBy="corporation")
      **/
     private $subscriptions;
     
     /**
      * @var integer
      *
-     * @ORM\Column(name="numSubcriptionMax", type="int")
+     * @ORM\Column(name="numSubscriptionMax", type="int")
      */
-    private $numSubcriptionMax;
+    private $numSubscriptionMax;
     
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->subscriptions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -71,7 +79,6 @@ class Corporation
      * Set name
      *
      * @param string $name
-     *
      * @return Corporation
      */
     public function setName($name)
@@ -84,7 +91,7 @@ class Corporation
     /**
      * Get name
      *
-     * @return string
+     * @return string 
      */
     public function getName()
     {
@@ -95,7 +102,6 @@ class Corporation
      * Set siret
      *
      * @param integer $siret
-     *
      * @return Corporation
      */
     public function setSiret($siret)
@@ -108,11 +114,34 @@ class Corporation
     /**
      * Get siret
      *
-     * @return integer
+     * @return integer 
      */
     public function getSiret()
     {
         return $this->siret;
+    }
+
+    /**
+     * Set numSubscriptionMax
+     *
+     * @param \int $numSubscriptionMax
+     * @return Corporation
+     */
+    public function setNumSubscriptionMax(\int $numSubscriptionMax)
+    {
+        $this->numSubscriptionMax = $numSubscriptionMax;
+
+        return $this;
+    }
+
+    /**
+     * Get numSubscriptionMax
+     *
+     * @return \int 
+     */
+    public function getNumSubscriptionMax()
+    {
+        return $this->numSubscriptionMax;
     }
 
     /**
@@ -136,5 +165,38 @@ class Corporation
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add subscriptions
+     *
+     * @param \Afup\SubscriptionBundle\Entity\CorporationSubscription $subscriptions
+     * @return Corporation
+     */
+    public function addSubscription(\Afup\SubscriptionBundle\Entity\CorporationSubscription $subscriptions)
+    {
+        $this->subscriptions[] = $subscriptions;
+
+        return $this;
+    }
+
+    /**
+     * Remove subscriptions
+     *
+     * @param \Afup\SubscriptionBundle\Entity\CorporationSubscription $subscriptions
+     */
+    public function removeSubscription(\Afup\SubscriptionBundle\Entity\CorporationSubscription $subscriptions)
+    {
+        $this->subscriptions->removeElement($subscriptions);
+    }
+
+    /**
+     * Get subscriptions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubscriptions()
+    {
+        return $this->subscriptions;
     }
 }

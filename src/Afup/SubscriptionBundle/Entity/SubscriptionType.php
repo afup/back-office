@@ -2,12 +2,14 @@
 
 namespace Afup\SubscriptionBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * Description of SubcriptionType
+ * Description of SubscriptionType
  *
  * @author Jérôme Desjardins <hello@jewome62.eu>
  */
-class SubcriptionType
+class SubscriptionType
 {
     /**
      * @var integer

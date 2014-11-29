@@ -5,14 +5,13 @@ namespace Afup\SubscriptionBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Subcription
+ * Subscription
  * 
  * @author Jérôme Desjardins <hello@jewome62.eu>
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Afup\SubscriptionBundle\Entity\Repository\SubcriptionRepository")
+ * @ORM\MappedSuperclass
  */
-class Subcription
+class Subscription
 {
     /**
      * @var integer
@@ -38,9 +37,9 @@ class Subcription
     private $endDate;
 
     /**
-     * @var \Afup\SubscriptionBundle\Entity\Corporation
+     * @var \Afup\SubscriptionBundle\Entity\SubscriptionType
      *
-     * @ORM\ManyToOne(targetEntity="Afup\SubscriptionBundle\Entity\SubcriptionType")
+     * @ORM\ManyToOne(targetEntity="Afup\SubscriptionBundle\Entity\SubscriptionType")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     private $type;
@@ -53,26 +52,9 @@ class Subcription
     private $price;
 
     /**
-     * @var \Afup\SubscriptionBundle\Entity\Corporation
-     *
-     * @ORM\ManyToOne(targetEntity="Afup\SubscriptionBundle\Entity\Corporation", inversedBy="subscriptions")
-     * @ORM\JoinColumn(name="corporation_id", referencedColumnName="id")
-     */
-    private $corporation;
-
-    /**
-     * @var \Afup\SubscriptionBundle\Entity\Member
-     *
-     * @ORM\ManyToOne(targetEntity="Afup\SubscriptionBundle\Entity\Member", inversedBy="subscriptions")
-     * @ORM\JoinColumn(name="member_id", referencedColumnName="id")
-     */
-    private $member;
-
-
-    /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -83,8 +65,7 @@ class Subcription
      * Set startDate
      *
      * @param \DateTime $startDate
-     *
-     * @return Subcription
+     * @return Subscription
      */
     public function setStartDate($startDate)
     {
@@ -96,7 +77,7 @@ class Subcription
     /**
      * Get startDate
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getStartDate()
     {
@@ -107,8 +88,7 @@ class Subcription
      * Set endDate
      *
      * @param \DateTime $endDate
-     *
-     * @return Subcription
+     * @return Subscription
      */
     public function setEndDate($endDate)
     {
@@ -120,7 +100,7 @@ class Subcription
     /**
      * Get endDate
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getEndDate()
     {
@@ -131,8 +111,7 @@ class Subcription
      * Set price
      *
      * @param float $price
-     *
-     * @return Subcription
+     * @return Subscription
      */
     public function setPrice($price)
     {
@@ -144,7 +123,7 @@ class Subcription
     /**
      * Get price
      *
-     * @return float
+     * @return float 
      */
     public function getPrice()
     {
@@ -152,50 +131,25 @@ class Subcription
     }
 
     /**
-     * Set corporation
+     * Set type
      *
-     * @param \stdClass $corporation
-     *
-     * @return Subcription
+     * @param \Afup\SubscriptionBundle\Entity\SubscriptionType $type
+     * @return Subscription
      */
-    public function setCorporation($corporation)
+    public function setType(\Afup\SubscriptionBundle\Entity\SubscriptionType $type = null)
     {
-        $this->corporation = $corporation;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get corporation
+     * Get type
      *
-     * @return \stdClass
+     * @return \Afup\SubscriptionBundle\Entity\SubscriptionType 
      */
-    public function getCorporation()
+    public function getType()
     {
-        return $this->corporation;
-    }
-
-    /**
-     * Set member
-     *
-     * @param \stdClass $member
-     *
-     * @return Subcription
-     */
-    public function setMember($member)
-    {
-        $this->member = $member;
-
-        return $this;
-    }
-
-    /**
-     * Get member
-     *
-     * @return \stdClass
-     */
-    public function getMember()
-    {
-        return $this->member;
+        return $this->type;
     }
 }
