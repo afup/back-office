@@ -1,18 +1,18 @@
-parameters:
-    afup_admin.menu_builder.class: Afup\AdminBundle\Menu\MenuBuilder
+#parameters:
+#    afup_admin.menu_builder.class: Afup\AdminBundle\Menu\MenuBuilder
+#
+#services:
+#    afup_admin.menu_builder:
+#        class: %afup_admin.menu_builder.class%
+#        arguments:
+#            - @knp_menu.factory
+#            - @security.context
 
-services:
-    afup_admin.menu_builder:
-        class: %afup_admin.menu_builder.class%
-        arguments:
-            - @knp_menu.factory
-            - @security.context
-
-    afup_admin.menu.main:
-        class: Knp\Menu\MenuItem
-        factory_service: afup_admin.menu_builder
-        factory_method: createMainMenu
-        arguments: ["@request"]
-        scope: request
-        tags:
-            - { name: knp_menu.menu, alias: main }
+#    afup_admin.menu.main:
+#        class: Knp\Menu\MenuItem
+#        factory_service: afup_admin.menu_builder
+#        factory_method: createMainMenu
+#        arguments: ["@request"]
+#        scope: request
+#        tags:
+#            - { name: knp_menu.menu, alias: main }

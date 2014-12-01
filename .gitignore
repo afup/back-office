@@ -10,4 +10,7 @@
 /vendor/
 /bin/
 /composer.phar
-/web/compiled
+/web/css
+/web/js
+*/_MACOSX/*
+/nbproject/

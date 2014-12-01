@@ -1,0 +1,9 @@
+parameters:
+    afup_legacy.kernel.class: Afup\LegacyBundle\Kernel\LegacyKernel
+
+
+services:
+    afup_legacy.kernel:
+        class: %afup_legacy.kernel.class%
+        calls:
+            - [ setRootDir, [ %theodo_evolution_legacy_wrapper.root_dir% ] ]

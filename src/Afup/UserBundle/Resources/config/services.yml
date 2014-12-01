@@ -1,0 +1,10 @@
+services:
+    afup_user.twig.getparent:
+        class: Afup\UserBundle\Twig\GetParentExtension
+        arguments: [ @service_container ]
+        tags:
+            - { name: twig.extension }
+    afup_user.registration.form.type:
+        class: Afup\UserBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: afup_user_registration }

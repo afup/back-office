@@ -1,0 +1,55 @@
+{% extends parent_template() %}
+
+{% block fos_user_content %}
+<div class="box-login">
+    <h3>Connectez-vous à votre compte</h3>
+    <p>
+           S'il vous plaît, entrer votre nom et mot de passe pour vous connecter.
+    </p>
+    {% if error %}
+        <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+    {% endif %}
+    <form class="form-login" action="{{ path("fos_user_security_check") }}" method="post">
+         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% if error %}
+                <div class="errorHandler alert alert-danger no-display"> <i class="fa fa-remove-sign"></i> {{ error|trans({}, 'FOSUserBundle') }}</div>
+            {% endif %}
+            <fieldset>
+                    <div class="form-group">
+                            <span class="input-icon">
+                                    <input type="text" class="form-control" name="_username" value="{{ last_username }}" required="required" placeholder="Nom d'utilisateur">
+                                    <i class="fa fa-user"></i> </span>
+                    </div>
+                    <div class="form-group form-actions">
+                            <span class="input-icon">
+                                    <input type="password" class="form-control password" id="password" name="_password" required="required" placeholder="Mot de passe">
+                                    <i class="fa fa-lock"></i>
+                                    <a class="forgot" href='{{ path('fos_user_resetting_request') }}'>
+                                           <img src="{{ asset('assets/images/loading.gif') }}" style="display:none;" class="loading-forgot" /> J'ai oublié mon mot de passe
+                                    </a> </span>
+                    </div>
+                    <div class="form-actions">
+                            <label for="remember" class="checkbox-inline">
+                                    <input id="remember_me" name="_remember_me" value="on" type="checkbox" class="grey remember">
+                                    Rester connecté
+                            </label>
+                            <input type="submit" id="_submit" name="_submit" class="btn btn-green pull-right">
+                                    {{ 'security.login.submit'|trans({}, 'FOSUserBundle') }} <i class="fa fa-arrow-circle-right"></i>
+                            </input>
+                    </div>
+                    <div class="new-account">
+                           Vous n'avez pas encore de compte?
+                            <a href="{{ path('fos_user_registration_register') }}" class="register">
+                                   Crée un compte
+                            </a>
+                            <img src="{{ asset('assets/images/loading.gif') }}" style="display:none;" class="loading-register" /> 
+                    </div>
+            </fieldset>
+    </form>
+    <!-- start: COPYRIGHT -->
+    <div class="copyright">
+        {% include '::copyright.html.twig' %}
+    </div>
+    <!-- end: COPYRIGHT -->
+</div>
+{% endblock fos_user_content %}

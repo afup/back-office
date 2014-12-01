@@ -1,0 +1,3 @@
+afup_member_homepage:
+    path:     /
+    defaults: { _controller: AfupMemberBundle:Default:index }

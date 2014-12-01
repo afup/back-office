@@ -1,9 +1,6 @@
 security:
     encoders:
-        Afup\CoreBundle\Entity\User:
-            algorithm: md5
-            iterations: 0
-            encode_as_base64: false
+        FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
         ROLE_ADMIN:       [ ROLE_ADMIN_USER, ROLE_USER ]
@@ -16,30 +13,27 @@ security:
             - ROLE_ADMIN_USER_CREATE
 
     providers:
-        main:
-            entity: { class: Afup\Model\Member, property: username }
         fos_userbundle:
             id: fos_user.user_provider.username
 
     firewalls:
-
-        login:
-            pattern:  ^/admin/login$
-            security: false
-
-        secured_area:
-            pattern:    ^/admin
+        member:
+            pattern: ^/membre
             form_login:
-                check_path: /admin/login_check
-                login_path: /admin/login
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                check_path: /membre/login_check
+                login_path: /membre/login
                 use_referer: true
+                default_target_path: /membre/
             logout:
-                path:   /admin/logout
-                target: /admin
+                path: fos_user_security_logout
+                target: /
+            anonymous:    true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/membre/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/membre/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/membre/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/membre, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }

@@ -1,4 +1,13 @@
 fos_user:
     db_driver: orm
-    firewall_name: main
-    user_class: Afup\Model\Member
+    firewall_name: member
+    user_class: Afup\UserBundle\Entity\User
+    registration:
+        form:
+            type: afup_user_registration
+        confirmation:
+            from_email: # Use this node only if you don't want the global email address for the confirmation email
+                address:        inscription@afup.fr
+                sender_name:    Afup
+            enabled:    true # change to true for required email confirmation
+            template:   FOSUserBundle:Registration:email.txt.twig

@@ -1,4 +1,18 @@
+afup_member:
+    resource: "@AfupMemberBundle/Resources/config/routing.yml"
+    prefix:   /membre
+
+afup_user:
+    resource: "@AfupUserBundle/Resources/config/routing.yml"
+    prefix:   /membre
+
+afup_subscription:
+    resource: "@AfupSubscriptionBundle/Resources/config/routing.yml"
+    prefix:   /
+
 afup_admin:
     resource: "@AfupAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
-
+    
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
