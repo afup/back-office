@@ -102,7 +102,7 @@ class PersonnalSubscriptionManager
      /**
      * Update the current Member subscription
      * @param User $user
-     * @param SubscriptionType $type
+     * @param Corporation $corporation
      * @param \DateTimeInterface $dateStart
      * @return Subscription
      */

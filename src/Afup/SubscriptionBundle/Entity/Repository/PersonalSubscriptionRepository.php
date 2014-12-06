@@ -3,6 +3,8 @@
 namespace Afup\SubscriptionBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Afup\SubscriptionBundle\Entity\Member;
+use Afup\UserBundle\Entity\User;
 
 /**
  * PersonalSubscriptionRepository
@@ -12,4 +14,58 @@ use Doctrine\ORM\EntityRepository;
  */
 class PersonalSubscriptionRepository extends EntityRepository
 {
+    /**
+     * Return the current Subscription
+     * @param Member $member
+     * @return Subscription
+     */
+    public function getCurrentSubscription(Member $member){
+        
+        $date = new \DateTime();
+
+        return $this->createQueryBuilder('s')
+            ->where('s.member = :member')
+            ->andWhere('s.dateStart <= :date')
+            ->andWhere('s.dateEnd >= :date')
+            ->setParameter('member', $member)
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+    
+    /**
+     * Return the current Subscription
+     * @param User $user
+     * @return Subscription
+     */
+    public function getCurrentSubscriptionWithUser(User $user){
+        return $this->getCurrentSubscription($user->getMember());
+    }
+
+    /**
+     * Return the last Subscription
+     * @param Member $member
+     * @return Subscription
+     */
+    public function getLastSubscription(Member $member){
+        
+        $date = new \DateTime();
+        
+        return $this->createQueryBuilder('s')
+            ->where('s.member = :member')
+            ->addOrderBy('s.dateStart', 'DESC')
+            ->setParameter('member', $member)
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+    
+    /**
+     * Return the current Subscription
+     * @param User $user
+     * @return Subscription
+     */
+    public function getLastSubscriptionWithUser(User $user){
+        return $this->getLastSubscription($user->getMember());
+    }
 }
