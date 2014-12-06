@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Description of SubscriptionType
  *
  * @author Jérôme Desjardins <hello@jewome62.eu>
+ * 
+ * @ORM\Entity()
  */
 class SubscriptionType
 {

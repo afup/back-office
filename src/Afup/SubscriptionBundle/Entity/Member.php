@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  * 
  * @author Jérôme Desjardins <hello@jewome62.eu>
  *
- * @ORM\Table()
  * @ORM\Entity(repositoryClass="Afup\SubscriptionBundle\Entity\Repository\MemberRepository")
  */
 class Member

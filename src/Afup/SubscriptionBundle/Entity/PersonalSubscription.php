@@ -30,4 +30,50 @@ class PersonalSubscription extends Subscription
     private $corporationSubscription;
     
  
+
+    /**
+     * Set member
+     *
+     * @param \Afup\SubscriptionBundle\Entity\Member $member
+     * @return PersonalSubscription
+     */
+    public function setMember(\Afup\SubscriptionBundle\Entity\Member $member = null)
+    {
+        $this->member = $member;
+
+        return $this;
+    }
+
+    /**
+     * Get member
+     *
+     * @return \Afup\SubscriptionBundle\Entity\Member 
+     */
+    public function getMember()
+    {
+        return $this->member;
+    }
+
+    /**
+     * Set corporationSubscription
+     *
+     * @param \Afup\SubscriptionBundle\Entity\CorporationSubscription $corporationSubscription
+     * @return PersonalSubscription
+     */
+    public function setCorporationSubscription(\Afup\SubscriptionBundle\Entity\CorporationSubscription $corporationSubscription = null)
+    {
+        $this->corporationSubscription = $corporationSubscription;
+
+        return $this;
+    }
+
+    /**
+     * Get corporationSubscription
+     *
+     * @return \Afup\SubscriptionBundle\Entity\CorporationSubscription 
+     */
+    public function getCorporationSubscription()
+    {
+        return $this->corporationSubscription;
+    }
 }

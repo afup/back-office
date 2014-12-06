@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Corporation
+ * 
+ * @author Jérôme Desjardins <hello@jewome62.eu>
  *
  * @ORM\Entity(repositoryClass="Afup\SubscriptionBundle\Entity\Repository\CorporationRepository")
  */
