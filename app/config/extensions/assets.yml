@@ -1,7 +1,7 @@
 assetic:
     debug:          "%kernel.debug%"
-    use_controller: true
-    bundles:        [ 'AfupAdminBundle', 'AfupUserBundle', 'FOSUserBundle' ]
+    use_controller: false
+    bundles:        [ 'AfupAdminBundle', 'AfupMemberBundle', 'AfupUserBundle', 'FOSUserBundle' ]
     filters:
         cssrewrite: ~
         yui_css:
