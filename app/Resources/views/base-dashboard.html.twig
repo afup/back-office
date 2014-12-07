@@ -1,0 +1,32 @@
+{% extends '::base-back.html.twig' %}
+
+{% block body %}dashboard{% endblock %}    
+
+{% block content %}
+    <div class="main-wrapper">
+        {% include ':Dashboard:header.html.twig' %}
+        {% include ':Dashboard:sidebar.html.twig' %}
+        <!-- start: MAIN CONTAINER -->
+        <div class="main-container inner">
+            <!-- start: PAGE -->
+            <div class="main-content">
+                {% block dashboard %}{% endblock %}
+            </div>
+        </div>
+        {% include ':Dashboard:footer.html.twig' %}
+    </div>
+{% endblock %}  
+
+{% block javascripts %}
+    {% javascripts 'assets/js/index.js'
+        'assets/js/main.js'
+        output="js/dashboard.js"
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+        <script>
+            jQuery(document).ready(function() {
+                Index.init();
+            });
+        </script>
+{% endblock %}  

@@ -1,1 +1,9 @@
-Hello {{ app.user.username }} !
+{% extends '::base-dashboard.html.twig' %}
+
+{% block dashboard %}
+    Hello {{ app.user.username }} !
+{% endblock %}  
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}  
