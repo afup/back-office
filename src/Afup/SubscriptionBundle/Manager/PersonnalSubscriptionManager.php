@@ -83,7 +83,7 @@ class PersonnalSubscriptionManager
      */
     public function updatePersonalMemberSubscription(User $user, SubscriptionType $type, \DateTimeInterface $dateStart = null){
         
-        $subscription = $this->em->getRepository('AfupSubscriptionBundle:Subscription')->getLastSubscriptionWithUser($user);
+        $subscription = $this->em->getRepository('AfupSubscriptionBundle:PersonnalSubscription')->getLastSubscriptionWithUser($user);
         
         $date = new \DateTime();
         $dateReference = ($dateStart instanceof \DateTime) ? $dateStart : new \DateTime();
@@ -108,7 +108,7 @@ class PersonnalSubscriptionManager
      */
     public function updateCorporateMemberSubscription(User $user, Corporation $corporation, \DateTimeInterface $dateStart = null){
         
-        $subscription = $this->em->getRepository('AfupSubscriptionBundle:Subscription')->getLastSubscriptionWithUser($user);
+        $subscription = $this->em->getRepository('AfupSubscriptionBundle:PersonnalSubscription')->getLastSubscriptionWithUser($user);
         
         $date = new \DateTime();
         $dateReference = ($dateStart instanceof \DateTime) ? $dateStart : new \DateTime();
