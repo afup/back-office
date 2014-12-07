@@ -45,16 +45,16 @@ class Corporation
     private $user;
     
     /**
-     * @var \Afup\SubscriptionBundle\Entity\CorporationSubscription
+     * @var \Afup\SubscriptionBundle\Entity\CorporateSubscription
      * 
-     * @ORM\OneToMany(targetEntity="Afup\SubscriptionBundle\Entity\CorporationSubscription", mappedBy="corporation")
+     * @ORM\OneToMany(targetEntity="Afup\SubscriptionBundle\Entity\CorporateSubscription", mappedBy="corporation")
      **/
     private $subscriptions;
     
     /**
      * @var integer
      *
-     * @ORM\Column(name="numSubscriptionMax", type="int")
+     * @ORM\Column(name="numSubscriptionMax", type="integer")
      */
     private $numSubscriptionMax;
     
@@ -172,10 +172,10 @@ class Corporation
     /**
      * Add subscriptions
      *
-     * @param \Afup\SubscriptionBundle\Entity\CorporationSubscription $subscriptions
+     * @param \Afup\SubscriptionBundle\Entity\CorporateSubscription $subscriptions
      * @return Corporation
      */
-    public function addSubscription(\Afup\SubscriptionBundle\Entity\CorporationSubscription $subscriptions)
+    public function addSubscription(\Afup\SubscriptionBundle\Entity\CorporateSubscription $subscriptions)
     {
         $this->subscriptions[] = $subscriptions;
 
@@ -185,9 +185,9 @@ class Corporation
     /**
      * Remove subscriptions
      *
-     * @param \Afup\SubscriptionBundle\Entity\CorporationSubscription $subscriptions
+     * @param \Afup\SubscriptionBundle\Entity\CorporateSubscription $subscriptions
      */
-    public function removeSubscription(\Afup\SubscriptionBundle\Entity\CorporationSubscription $subscriptions)
+    public function removeSubscription(\Afup\SubscriptionBundle\Entity\CorporateSubscription $subscriptions)
     {
         $this->subscriptions->removeElement($subscriptions);
     }

@@ -22,12 +22,12 @@ class PersonalSubscription extends Subscription
     private $member;
     
     /**
-     * @var \Afup\SubscriptionBundle\Entity\CorporationSubscription
+     * @var \Afup\SubscriptionBundle\Entity\CorporateSubscription
      *
-     * @ORM\ManyToOne(targetEntity="Afup\SubscriptionBundle\Entity\CorporationSubscription", inversedBy="employee")
-     * @ORM\JoinColumn(name="corporation_subscription_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Afup\SubscriptionBundle\Entity\CorporateSubscription", inversedBy="employee")
+     * @ORM\JoinColumn(name="corporate_subscription_id", referencedColumnName="id")
      */
-    private $corporationSubscription;
+    private $corporateSubscription;
     
  
 
@@ -55,25 +55,25 @@ class PersonalSubscription extends Subscription
     }
 
     /**
-     * Set corporationSubscription
+     * Set corporateSubscription
      *
-     * @param \Afup\SubscriptionBundle\Entity\CorporationSubscription $corporationSubscription
+     * @param \Afup\SubscriptionBundle\Entity\CorporateSubscription $corporateSubscription
      * @return PersonalSubscription
      */
-    public function setCorporationSubscription(\Afup\SubscriptionBundle\Entity\CorporationSubscription $corporationSubscription = null)
+    public function setCorporateSubscription(\Afup\SubscriptionBundle\Entity\CorporateSubscription $corporateSubscription = null)
     {
-        $this->corporationSubscription = $corporationSubscription;
+        $this->corporateSubscription = $corporateSubscription;
 
         return $this;
     }
 
     /**
-     * Get corporationSubscription
+     * Get corporateSubscription
      *
-     * @return \Afup\SubscriptionBundle\Entity\CorporationSubscription 
+     * @return \Afup\SubscriptionBundle\Entity\CorporateSubscription 
      */
-    public function getCorporationSubscription()
+    public function getCorporateSubscription()
     {
-        return $this->corporationSubscription;
+        return $this->corporateSubscription;
     }
 }

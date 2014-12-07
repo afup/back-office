@@ -3,7 +3,7 @@
 namespace Afup\SubscriptionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Afup\SubscriptionBundle\Entity\Corporation;
 /**
  * Description of CorporateSubscription
  *
@@ -14,9 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
 class CorporateSubscription extends Subscription
 {
     /**
-     * @var \Afup\SubscriptionBundle\Entity\CorporationSubscription
+     * @var \Afup\SubscriptionBundle\Entity\Corporation
      *
-     * @ORM\ManyToOne(targetEntity="Afup\SubscriptionBundle\Entity\CorporationSubscription", inversedBy="subscriptions")
+     * @ORM\ManyToOne(targetEntity="Afup\SubscriptionBundle\Entity\Corporation", inversedBy="subscriptions")
      * @ORM\JoinColumn(name="corporation_id", referencedColumnName="id")
      */
     private $corporation;
@@ -24,10 +24,10 @@ class CorporateSubscription extends Subscription
     /**
      * Set corporation
      *
-     * @param \Afup\SubscriptionBundle\Entity\CorporationSubscription $corporation
+     * @param \Afup\SubscriptionBundle\Entity\Corporation $corporation
      * @return CorporateSubscription
      */
-    public function setCorporation(\Afup\SubscriptionBundle\Entity\CorporationSubscription $corporation = null)
+    public function setCorporation(Corporation $corporation = null)
     {
         $this->corporation = $corporation;
 
